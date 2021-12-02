@@ -39,13 +39,13 @@
        (horizontal 0))
    (loop
      for instruction in puzzle-input
-     for (direction units ) = (uiop:split-string instruction :separator " ")
+     for (direction units) = (uiop:split-string instruction :separator " ")
      if (equal direction "up")
-       do (setf aim (- aim (parse-integer units)))
+       do (decf aim (parse-integer units))
      if (equal direction "down")
-       do (setf aim (+ aim (parse-integer units)))
+       do (incf aim (parse-integer units))
      if (equal direction "forward")
        do (progn
-            (setf horizontal (+ horizontal (parse-integer units)))
-            (setf depth (+ depth (* aim (parse-integer units))))))
+            (incf horizontal (parse-integer units))
+            (incf depth (* aim (parse-integer units)))))
    (* horizontal depth)))

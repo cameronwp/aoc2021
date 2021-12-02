@@ -30,3 +30,22 @@
      if (equal direction "forward")
        do (setf horizontal (+ horizontal (parse-integer distance))))
    (* horizontal depth)))
+
+;; part 2
+(print
+ (let ((puzzle-input (read-puzzle-input-lines "day2.txt"))
+       (aim 0)
+       (depth 0)
+       (horizontal 0))
+   (loop
+     for instruction in puzzle-input
+     for (direction units ) = (uiop:split-string instruction :separator " ")
+     if (equal direction "up")
+       do (setf aim (- aim (parse-integer units)))
+     if (equal direction "down")
+       do (setf aim (+ aim (parse-integer units)))
+     if (equal direction "forward")
+       do (progn
+            (setf horizontal (+ horizontal (parse-integer units)))
+            (setf depth (+ depth (* aim (parse-integer units))))))
+   (* horizontal depth)))

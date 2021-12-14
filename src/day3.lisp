@@ -62,15 +62,15 @@
 
 (defun filter-o2 (n o2-lines o2-mcv)
   "Perform O2 algo by filtering the list of inputs based on MCV. Returns new list and new MCV"
-  (loop for iline in o2-lines
-        while (> (list-length o2-lines) 1)
-        if (= (nth n iline) o2-mcv)
-          ;; get the next set of lines ready
-          append (list iline) into filtered-o2-lines and
-        ;; update the next position if we haven't reached the end of the list
-        if (< (1+ n) (list-length iline))
-          sum (nth (1+ n) iline) into o2-mcv-next
-        finally (return (values filtered-o2-lines (most-common-value o2-mcv-next (list-length filtered-o2-lines))))))
+  (if (= (list-length o2-lines) 1) o2-lines
+      (loop for iline in o2-lines
+            if (= (nth n iline) o2-mcv)
+              ;; get the next set of lines ready
+              append (list iline) into filtered-o2-lines and
+            ;; update the next position if we haven't reached the end of the list
+            if (< (1+ n) (list-length iline))
+              sum (nth (1+ n) iline) into o2-mcv-next
+            finally (return (values filtered-o2-lines (most-common-value o2-mcv-next (list-length filtered-o2-lines)))))))
 
 (defun filter-co2 (n co2-lines co2-lcv)
   "Perform CO2 algo by filtering the list of inputs based on LCV. Returns new list and new LCV"
@@ -124,21 +124,3 @@
 
 (print (day3part2))
 
-(day3part2)
-
-;; (defun day3part2 ()
-  ;; "Day 3 part 2"
- ;; (let* ((report (read-puzzle-input-lines "day3.txt"))
-        ;; a list of 1s and 0s representing the most common digit at each position in the list of inputs
-        ;; (summary (loop for input in report
-                       ;; for digits = (map 'list #'digit-char-p (coerce input 'list))
-                       ;; with summary = '(0 0 0 0 0 0 0 0 0 0 0 0)
-                       ;; do (setf summary (mapcar #'+ summary digits))
-                       ;; finally (return (map 'integer #'(lambda (b) (if (>= b 500) 1 0)) summary)))))
-   ;; (dotimes (n (list-length summary))
-               ;; (print (nth n summary)))
-   ;; (*
-    ;; O2 generation rating
-    ;; (loop )
-    ;; CO2 scrubbing rating
-    ;; ()))

@@ -48,7 +48,7 @@
 ;; part 2
 
 (defun str->list (input)
-  "Convert an string of numbers into a list of its corresponding digits"
+  "Convert a string of numbers into a list of its corresponding digits"
   ;; TODO: there's probably a better way of doing this
   (map 'list #'digit-char-p (coerce input 'list)))
 
@@ -67,9 +67,9 @@
             if (= (nth n iline) o2-mcv)
               ;; get the next set of lines ready
               append (list iline) into filtered-o2-lines and
-            ;; update the next position if we haven't reached the end of the list
-            if (< (1+ n) (list-length iline))
-              sum (nth (1+ n) iline) into o2-mcv-next
+              ;; update the next position if we haven't reached the end of the list
+              if (< (1+ n) (list-length iline))
+                sum (nth (1+ n) iline) into o2-mcv-next
             finally (return (values filtered-o2-lines (most-common-value o2-mcv-next (list-length filtered-o2-lines)))))))
 
 (defun filter-co2 (n co2-lines co2-lcv)
@@ -79,9 +79,9 @@
             if (= (nth n iline) co2-lcv)
               ;; get the next set of lines ready
               append (list iline) into filtered-co2-lines and
-            ;; update the next position if we haven't reached the end of the list
-            if (< (1+ n) (list-length iline))
-              sum (nth (1+ n) iline) into co2-lcv-next
+              ;; update the next position if we haven't reached the end of the list
+              if (< (1+ n) (list-length iline))
+                sum (nth (1+ n) iline) into co2-lcv-next
             finally (return (values filtered-co2-lines (least-common-value co2-lcv-next (list-length filtered-co2-lines)))))))
 
 (defun filter-down-ratings (lines)

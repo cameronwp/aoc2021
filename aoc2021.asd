@@ -3,4 +3,5 @@
   :pathname "src"
   :components ((:file "day1")
                (:file "day2"))
-  :depends-on ("bit-smasher"))
+  :depends-on ("bit-smasher"
+               "cl-ppcre"))

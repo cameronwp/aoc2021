@@ -32,6 +32,7 @@
  ("bit-smasher"))
 ("cl-base58" :version "2015-01-13" :source "quicklisp" :systems ("cl-base58"))
 ("cl-base64" :version "2020-10-16" :source "quicklisp" :systems ("cl-base64"))
+("cl-ppcre" :version "2019-05-21" :source "quicklisp" :systems ("cl-ppcre"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -46,4 +47,6 @@
 ("cl-base58" ((:system :name "bit-smasher") (:system :name "cl-base58")))
 
 ("cl-base64" ((:system :name "bit-smasher") (:system :name "cl-base64")))
+
+("cl-ppcre" ((:system :name "aoc2021") (:system :name "cl-ppcre")))
 
